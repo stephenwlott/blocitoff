@@ -7,8 +7,34 @@
         <br/>
         <h2 class="media-heading">User Profile</h2>
         <br/>
-        <h2 class="media-heading">name: <%= @user.name %></h2>
-        <h2 class="media-heading">email: <%= @user.email %></h2>
+        <% if @user %>
+          <h2 class="media-heading">name: <%= @user.name %></h2>
+          <h2 class="media-heading">email: <%= @user.email %></h2>
+          <% if @item_list.first %>
+            <br/>
+            <h2>To-Do Items</h2>
+            <table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th><h3>Item</h3></th>
+                  <th><h3>Days Left</h3></th>
+                  <th><h3>Complete</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @item_list.each do |i| %>
+                  <%= render partial: 'items/item', locals: {item: i} %>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <br/>
+            <h2>No to-do items</h2>
+          <% end %>
+        <% else %>
+          <br/>
+          <h2>No user signed in</h2>
+        <% end %>
       </div>
     </div>
   </div>
