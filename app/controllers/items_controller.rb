@@ -5,10 +5,7 @@ class ItemsController < ApplicationController
   end
   
   def create
-    @user = current_user
-    @user_id = @user.id
-    @item = Item.new(params.require(:item).permit(:name))
-    @item.user = current_user
+    @item = current_user.items.new(params.require(:item).permit(:name))
     if @item.save
       redirect_to '/', notice: "Item was saved successfully."
     else
