@@ -19,10 +19,8 @@ class ItemsController < ApplicationController
  
     if @item.destroy
       flash[:notice] = "To-Do Item was deleted."
-      #redirect_to user_path
     else
       flash[:error] = "To-Do Item couldn't be deleted. Try again."
-      #redirect_to user_path
     end
     
     respond_to do |format|
