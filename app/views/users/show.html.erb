@@ -10,7 +10,7 @@
         <% if @user %>
           <h2 class="media-heading">name: <%= @user.name %></h2>
           <h2 class="media-heading">email: <%= @user.email %></h2>
-          <% if @item_list.first %>
+          <% if @items.first %>
             <br/>
             <h2>To-Do Items</h2>
             <table class="table table-bordered table-condensed">
@@ -22,8 +22,8 @@
                 </tr>
               </thead>
               <tbody>
-                <% @item_list.each do |i| %>
-                  <%= render partial: 'items/item', locals: {item: i} %>
+                <% @items.each do |item| %>
+                <%= render partial: 'items/item', locals: {user: @user, item: item} %>
                 <% end %>
               </tbody>
             </table>
